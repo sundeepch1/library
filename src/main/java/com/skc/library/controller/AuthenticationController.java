@@ -33,7 +33,7 @@ public class AuthenticationController {
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 	
-	@PostMapping(value="/login")
+	@PostMapping(value="/api/login")
 	public ResponseEntity<UserDTO> login(@RequestBody User user, HttpServletRequest request, HttpServletResponse response){
 		try {
 			Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));

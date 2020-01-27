@@ -28,7 +28,7 @@ public class UserController {
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/user")
+	@GetMapping(value="/api/user")
 	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<User>  getUser(Principal principal){
 		User user = userService.getUserByEmail(principal.getName());
