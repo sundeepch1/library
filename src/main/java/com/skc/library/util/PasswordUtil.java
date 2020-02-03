@@ -9,5 +9,9 @@ public class PasswordUtil {
 	public static String getPasswordHash(String password) {
 		return bCryptPasswordEncoder.encode(password);
 	}
+	
+	public static BCryptPasswordEncoder getBCryptPasswordEncoder() {
+		return bCryptPasswordEncoder;
+	}
 
 }

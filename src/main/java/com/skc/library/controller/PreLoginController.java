@@ -17,12 +17,15 @@ public class PreLoginController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping(value="/registration")
+	@PostMapping(value="/api/registration")
 	public ResponseEntity<Response> registration(@RequestBody User user){
-		User dbUser = userService.save(user);
-		if(dbUser != null) {
-			return new ResponseEntity<Response>(new Response("User is saved successfully"), HttpStatus.OK);
+		User userFromDB = userService.getUserByEmail(user.getEmail());
+		if(userFromDB == null) {
+			User dbUser = userService.save(user);
+			if(dbUser != null) {
+				return new ResponseEntity<Response>(new Response("User is saved successfully"), HttpStatus.OK);
+			}
 		}
-		return null;
+		return new ResponseEntity<Response>(new Response("email_exist"), HttpStatus.OK);
 	}
 }

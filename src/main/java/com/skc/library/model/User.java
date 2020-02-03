@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
@@ -16,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -51,6 +53,10 @@ public class User implements Serializable{
 	
 	@Column(name="created_date")
 	private Date createdDate;
+	
+	@Column(name="date_of_birth")
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
 	
 	public Long getId() {
 		return id;
@@ -108,5 +114,11 @@ public class User implements Serializable{
 	}
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 }
