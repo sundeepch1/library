@@ -1,3 +1,5 @@
+ng serve --o --proxy-config proxy.config.json
+
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `first_name` varchar(50) NOT NULL,
